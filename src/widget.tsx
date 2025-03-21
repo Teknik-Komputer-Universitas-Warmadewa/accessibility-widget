@@ -6,7 +6,8 @@ import "./index.css"; // Your Tailwind and custom styles (only in the Shadow DOM
 function injectCSS(shadowRoot: ShadowRoot) {
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "/dist/accessibility-widget.css"; // Adjust path based on your setup
+  link.href =
+    "https://cdn.jsdelivr.net/gh/Teknik-Komputer-Universitas-Warmadewa/accessibility-widget@v1.0.7/dist/accessibility-widget.css"; // Adjust path based on your setup
   shadowRoot.appendChild(link); // Append to Shadow DOM
 }
 
