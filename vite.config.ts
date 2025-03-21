@@ -4,6 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [tailwindcss(), react()],
+  define: {
+    "process.env.NODE_ENV": JSON.stringify("production"), // Define 'process' for browser
+  },
   build: {
     lib: {
       entry: "./src/widget.tsx",
