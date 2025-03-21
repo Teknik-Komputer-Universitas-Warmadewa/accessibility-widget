@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [tailwindcss(), react()],
   define: {
-    "process.env.NODE_ENV": JSON.stringify("production"), // Define 'process' for browser
+    "process.env.NODE_ENV": JSON.stringify("production"),
   },
   build: {
     lib: {
@@ -15,13 +15,12 @@ export default defineConfig({
       fileName: () => "accessibility-widget.js",
     },
     rollupOptions: {
-      // external: ["react", "react-dom"],
-      // output: {
-      //   globals: {
-      //     react: "React",
-      //     "react-dom": "ReactDOM",
-      //   },
-      // },
+      // Ensure CSS is output separately
+      output: {
+        assetFileNames: "accessibility-widget.[ext]",
+      },
     },
+    // Enable CSS output
+    cssCodeSplit: false, // Bundle all CSS into one file
   },
 });
