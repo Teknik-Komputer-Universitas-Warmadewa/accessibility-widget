@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Invert everything */
+/* .invert {
+  filter: invert(1) hue-rotate(180deg);
+} */
+
+/* Fix images, videos, and icons (re-invert to normal) */
+.invert img,
+.invert video,
+.invert iframe,
+.invert svg {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Only change background when .invert is on the <body> */
+body.invert {
+  background-color: #121212 !important;
+}
+
+
+/* Optional: Adjust links */
+.invert a {
+  color: #ffcc00 !important; /* Yellow links */
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("/fonts/OpenDyslexic-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.dyslexia-font {
+  font-family: "OpenDyslexic", Arial, sans-serif !important;
+}
+
+.big-cursor {
+  cursor: url("/cursors/.big-cursor.png"), auto;
+}
+
