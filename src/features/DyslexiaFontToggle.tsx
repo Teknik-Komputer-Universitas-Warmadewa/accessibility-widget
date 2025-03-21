@@ -1,9 +1,35 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { RiBookReadLine } from "react-icons/ri";
 
 const DyslexiaFontToggle = () => {
   const [enabled, setEnabled] = useState(false);
 
+  useEffect(() => {
+    // Dynamically create a <style> tag to inject font styles
+    const style = document.createElement("style");
+    style.textContent = `
+      @font-face {
+        font-family: "OpenDyslexic";
+        src: url("/dist/fonts/OpenDyslexic-Regular.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      .dyslexia-font {
+        font-family: "OpenDyslexic", Arial, sans-serif !important;
+      }
+    `;
+
+    // Append the style to the head of the document
+    document.head.appendChild(style);
+
+    // Clean up by removing the style tag when the component unmounts
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  // Toggle the dyslexia font on and off
   useEffect(() => {
     const body = document.body;
 
@@ -19,7 +45,7 @@ const DyslexiaFontToggle = () => {
   }, [enabled]);
 
   const toggleFont = () => {
-    setEnabled((prev) => !prev);
+    setEnabled((prev) => !prev); // Toggle dyslexia font
   };
 
   return (

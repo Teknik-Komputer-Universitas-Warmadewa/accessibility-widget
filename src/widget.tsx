@@ -1,25 +1,28 @@
 import ReactDOM from "react-dom/client";
-import Menu from "./Menu";
-import "./index.css";
+import Menu from "./Menu"; // Your menu component
+import "./index.css"; // Your Tailwind and custom styles (only in the Shadow DOM)
 
-// Function to inject CSS dynamically
-function injectCSS() {
+// Function to inject CSS dynamically into Shadow DOM
+function injectCSS(shadowRoot: ShadowRoot) {
   const link = document.createElement("link");
   link.rel = "stylesheet";
   link.href = "/dist/accessibility-widget.css"; // Adjust path based on your setup
-  document.head.appendChild(link);
+  shadowRoot.appendChild(link); // Append to Shadow DOM
 }
 
 // Initialize widget after DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Accessibility Widget Loaded");
 
-  // Inject CSS
-  injectCSS();
-
-  // Render the widget
+  // Create a container for the widget and attach a Shadow DOM to it
   const container = document.createElement("div");
+  const shadowRoot = container.attachShadow({ mode: "open" }); // Open Shadow DOM
   document.body.appendChild(container);
-  const root = ReactDOM.createRoot(container);
+
+  // Inject CSS into the Shadow DOM
+  injectCSS(shadowRoot);
+
+  // Render your widget inside the Shadow DOM
+  const root = ReactDOM.createRoot(shadowRoot);
   root.render(<Menu />);
 });
