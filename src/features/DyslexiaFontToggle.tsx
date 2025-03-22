@@ -10,7 +10,7 @@ const DyslexiaFontToggle = () => {
     style.textContent = `
       @font-face {
         font-family: "OpenDyslexic";
-        src: url("/dist/fonts/OpenDyslexic-Regular.otf") format("opentype");
+        src: url("https://cdn.jsdelivr.net/gh/Teknik-Komputer-Universitas-Warmadewa/accessibility-widget@v1.0.5/dist/accessibility-widget.js") format("opentype");
         font-weight: normal;
         font-style: normal;
       }
