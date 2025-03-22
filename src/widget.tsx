@@ -7,7 +7,7 @@ function injectCSS(shadowRoot: ShadowRoot) {
   const link = document.createElement("link");
   link.rel = "stylesheet";
   link.href =
-    "https://cdn.jsdelivr.net/gh/Teknik-Komputer-Universitas-Warmadewa/accessibility-widget@v1.0.7/dist/accessibility-widget.css"; // Adjust path based on your setup
+    "https://cdn.jsdelivr.net/gh/Teknik-Komputer-Universitas-Warmadewa/accessibility-widget@v1.0.8/dist/accessibility-widget.css"; // Adjust path based on your setup
   shadowRoot.appendChild(link); // Append to Shadow DOM
 }
 
