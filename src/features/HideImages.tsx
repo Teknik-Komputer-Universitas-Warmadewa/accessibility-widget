@@ -8,15 +8,15 @@ const HideImages = () => {
     const images = document.querySelectorAll("img");
     images.forEach((img) => {
       if (hideImages) {
-        (img as HTMLElement).style.display = "none";
+        (img as HTMLElement).style.visibility = "hidden";
       } else {
-        (img as HTMLElement).style.display = "";
+        (img as HTMLElement).style.visibility = "visible";
       }
     });
 
     return () => {
       images.forEach((img) => {
-        (img as HTMLElement).style.display = "";
+        (img as HTMLElement).style.visibility = "visible";
       });
     };
   }, [hideImages]);

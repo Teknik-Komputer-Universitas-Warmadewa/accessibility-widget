@@ -24,7 +24,7 @@ const ImageDescriberWithSpeech = () => {
     const speak = (text: string) => {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "en-US";
+      utterance.lang = "id-ID";
       window.speechSynthesis.speak(utterance);
     };
 

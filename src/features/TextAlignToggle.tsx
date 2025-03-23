@@ -18,18 +18,18 @@ const TextAlignToggle = () => {
   const alignment = getAlignValue(alignStep);
 
   useEffect(() => {
-    // Apply alignment to all content in body
-    document.body.style.textAlign = alignment;
+    // Apply alignment to body using !important
+    document.body.style.setProperty("text-align", alignment, "important");
 
-    // Optional: Force other block elements to match
+    // Force other block elements to match using !important
     document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, span, div").forEach((el) => {
-      (el as HTMLElement).style.textAlign = alignment;
+      (el as HTMLElement).style.setProperty("text-align", alignment, "important");
     });
 
     return () => {
-      document.body.style.textAlign = "left";
+      document.body.style.removeProperty("text-align");
       document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, span, div").forEach((el) => {
-        (el as HTMLElement).style.textAlign = "";
+        (el as HTMLElement).style.removeProperty("text-align");
       });
     };
   }, [alignment]);

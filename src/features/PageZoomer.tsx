@@ -23,14 +23,24 @@ const PageZoomer = () => {
 
   useEffect(() => {
     const body = document.body;
-    body.style.transform = `scale(${scale})`;
-    body.style.transformOrigin = "top left";
-    body.style.width = `${100 / scale}%`;
+
+    if (scale === 1.0) {
+      // Clear styles when zoom is off
+      body.style.removeProperty("transform");
+      body.style.removeProperty("transformOrigin");
+      body.style.removeProperty("width");
+    } else {
+      // Apply zoom styles
+      body.style.transform = `scale(${scale})`;
+      body.style.transformOrigin = "top left";
+      body.style.width = `${100 / scale}%`;
+    }
 
     return () => {
-      body.style.transform = "";
-      body.style.transformOrigin = "";
-      body.style.width = "";
+      // Clean up on unmount or zoom change
+      body.style.removeProperty("transform");
+      body.style.removeProperty("transformOrigin");
+      body.style.removeProperty("width");
     };
   }, [scale]);
 
