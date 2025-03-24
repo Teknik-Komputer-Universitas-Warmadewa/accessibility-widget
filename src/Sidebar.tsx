@@ -9,13 +9,13 @@ import SaturationAdjuster from "./features/SaturationAdjuster";
 import ImageDescriberWithSpeech from "./features/ImageDescriberWithSpeech";
 import DyslexiaFontToggle from "./features/DyslexiaFontToggle";
 import TextAlignToggle from "./features/TextAlignToggle";
+import Footer from "./Footer";
 
 const Sidebar = ({ onClose }: { onClose: () => void }) => {
   return (
     <div className="fixed top-0 right-0 w-80 h-screen bg-white shadow-lg border-l z-50 flex flex-col overflow-auto">
       {/* Header */}
       <SidebarHeader onClose={onClose} />
-
       <div className=" p-4 grid grid-cols-2 grid-rows-2 gap-2">
         <InvertColorsButton />
         <ScreenReader />
@@ -28,6 +28,7 @@ const Sidebar = ({ onClose }: { onClose: () => void }) => {
         <HideImages />
         <LineHeightAdjuster />
       </div>
+      <Footer />
     </div>
   );
 };
